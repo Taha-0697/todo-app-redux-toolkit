@@ -1,19 +1,14 @@
 import React from "react";
 import TodoItem from "../TodoItem/TodoItem";
+import { useSelector } from "react-redux";
 
 const TodoList = () => {
-    const todos = [
-        { id: 1, title: "todo1", completed: false },
-        { id: 2, title: "todo2", completed: false },
-        { id: 3, title: "todo3", completed: true },
-        { id: 4, title: "todo4", completed: true },
-        { id: 5, title: "todo5", completed: false },
-    ];
+    const todo = useSelector((state) => state.task);
     return (
         <>
             <ul className="list-group">
-                {todos.map((todo) => {
-                    return <TodoItem id={todo.id} title={todo.title} completed={todo.completed} />;
+                {todo.map((todo) => {
+                    return <TodoItem key={todo.id} id={todo.id} title={todo.title} completed={todo.completed} />;
                 })}
             </ul>
         </>
